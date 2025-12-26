@@ -47,5 +47,10 @@ namespace Tyuiu.DevyatovEV.Sprint7.Project.V7
         {
 
         }
+
+        private void labelDeveloper_DEV_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

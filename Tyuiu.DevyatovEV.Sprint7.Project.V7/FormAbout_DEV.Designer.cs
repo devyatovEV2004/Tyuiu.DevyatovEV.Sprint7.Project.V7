@@ -78,11 +78,11 @@
             labelVersion_DEV.AutoSize = true;
             labelVersion_DEV.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             labelVersion_DEV.ForeColor = Color.FromArgb(128, 128, 128);
-            labelVersion_DEV.Location = new Point(30, 200);
+            labelVersion_DEV.Location = new Point(30, 28);
             labelVersion_DEV.Name = "labelVersion_DEV";
-            labelVersion_DEV.Size = new Size(93, 15);
+            labelVersion_DEV.Size = new Size(84, 15);
             labelVersion_DEV.TabIndex = 3;
-            labelVersion_DEV.Text = "Версия: 1.0.0.0";
+            labelVersion_DEV.Text = "Версия: BETA";
             labelVersion_DEV.Click += labelVersion_DEV_Click;
             // 
             // labelDeveloper_DEV
@@ -90,18 +90,19 @@
             labelDeveloper_DEV.AutoSize = true;
             labelDeveloper_DEV.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             labelDeveloper_DEV.ForeColor = Color.FromArgb(0, 102, 204);
-            labelDeveloper_DEV.Location = new Point(30, 240);
+            labelDeveloper_DEV.Location = new Point(30, 58);
             labelDeveloper_DEV.Name = "labelDeveloper_DEV";
             labelDeveloper_DEV.Size = new Size(310, 19);
             labelDeveloper_DEV.TabIndex = 4;
             labelDeveloper_DEV.Text = "Разработчик: Девятов Егор Владимирович";
+            labelDeveloper_DEV.Click += labelDeveloper_DEV_Click;
             // 
             // labelGroup_DEV
             // 
             labelGroup_DEV.AutoSize = true;
             labelGroup_DEV.Font = new Font("Segoe UI", 10F);
             labelGroup_DEV.ForeColor = Color.FromArgb(64, 64, 64);
-            labelGroup_DEV.Location = new Point(30, 270);
+            labelGroup_DEV.Location = new Point(30, 94);
             labelGroup_DEV.Name = "labelGroup_DEV";
             labelGroup_DEV.Size = new Size(135, 19);
             labelGroup_DEV.TabIndex = 5;
@@ -112,7 +113,7 @@
             labelCourse_DEV.AutoSize = true;
             labelCourse_DEV.Font = new Font("Segoe UI", 10F);
             labelCourse_DEV.ForeColor = Color.FromArgb(64, 64, 64);
-            labelCourse_DEV.Location = new Point(30, 300);
+            labelCourse_DEV.Location = new Point(30, 126);
             labelCourse_DEV.Name = "labelCourse_DEV";
             labelCourse_DEV.Size = new Size(177, 19);
             labelCourse_DEV.TabIndex = 6;
@@ -126,7 +127,7 @@
             buttonClose_DEV.FlatStyle = FlatStyle.Flat;
             buttonClose_DEV.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             buttonClose_DEV.ForeColor = Color.White;
-            buttonClose_DEV.Location = new Point(551, 321);
+            buttonClose_DEV.Location = new Point(279, 208);
             buttonClose_DEV.Name = "buttonClose_DEV";
             buttonClose_DEV.Size = new Size(150, 40);
             buttonClose_DEV.TabIndex = 8;
@@ -157,19 +158,19 @@
             panelFooter_DEV.Dock = DockStyle.Fill;
             panelFooter_DEV.Location = new Point(0, 200);
             panelFooter_DEV.Name = "panelFooter_DEV";
-            panelFooter_DEV.Size = new Size(721, 381);
+            panelFooter_DEV.Size = new Size(721, 281);
             panelFooter_DEV.TabIndex = 10;
             // 
             // FormAbout_DEV
             // 
             AutoSize = true;
-            ClientSize = new Size(721, 581);
+            ClientSize = new Size(721, 481);
             Controls.Add(panelFooter_DEV);
             Controls.Add(panelHeader_DEV);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             MinimizeBox = false;
-            MinimumSize = new Size(720, 620);
+            MinimumSize = new Size(720, 520);
             Name = "FormAbout_DEV";
             StartPosition = FormStartPosition.CenterParent;
             Text = "О программе - Домоуправление";

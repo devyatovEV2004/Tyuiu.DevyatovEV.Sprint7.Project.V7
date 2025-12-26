@@ -23,12 +23,17 @@ namespace Tyuiu.DevyatovEV.Sprint7.Project.V7
         private Button Graph_DEV;
         private Button About_DEV;
         private Button Guide_DEV;
+        private Button Statistics_DEV; // ДОБАВЛЕНО
+        private Button Export_DEV;     // ДОБАВЛЕНО
 
         public FormMain_DEV()
         {
             InitializeComponent();
             LoadData_DEV();
             ConfigureDataGridViewForEditing();
+
+            // Скрываем меню, так как теперь есть кнопки
+            menuStripMain_DEV.Visible = false;
         }
 
         private void LoadData_DEV()
@@ -213,23 +218,8 @@ namespace Tyuiu.DevyatovEV.Sprint7.Project.V7
             new FormAbout_DEV().ShowDialog();
         }
 
-        // ===== СУЩЕСТВУЮЩИЕ ОБРАБОТЧИКИ =====
-
-        private void TextSearch_DEV_TextChanged(object sender, EventArgs e)
-        {
-            string text = textBoxSearch_DEV.Text.Trim().Replace("'", "''");
-            view_DEV.RowFilter = string.IsNullOrEmpty(text)
-                ? ""
-                : $"TenantLastName LIKE '%{text}%'";
-        }
-
-        private void BtnResetSearch_DEV_Click(object sender, EventArgs e)
-        {
-            textBoxSearch_DEV.Text = "";
-            view_DEV.RowFilter = "";
-        }
-
-        private void MenuStatistics_DEV_Click(object sender, EventArgs e)
+        // Кнопка Статистика (Statistics_DEV)
+        private void Statistics_DEV_Click(object sender, EventArgs e)
         {
             if (view_DEV.Count == 0)
             {
@@ -293,7 +283,8 @@ $@"СТАТИСТИКА ПО ТЕКУЩЕЙ ТАБЛИЦЕ
             }
         }
 
-        private void MenuExport_DEV_Click(object sender, EventArgs e)
+        // Кнопка Экспорт (Export_DEV)
+        private void Export_DEV_Click(object sender, EventArgs e)
         {
             using SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "CSV файлы (*.csv)|*.csv";
@@ -327,6 +318,33 @@ $@"СТАТИСТИКА ПО ТЕКУЩЕЙ ТАБЛИЦЕ
             File.WriteAllText(sfd.FileName, sb.ToString(), Encoding.UTF8);
             MessageBox.Show("Экспорт завершён", "Готово",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        // ===== СУЩЕСТВУЮЩИЕ ОБРАБОТЧИКИ =====
+
+        private void TextSearch_DEV_TextChanged(object sender, EventArgs e)
+        {
+            string text = textBoxSearch_DEV.Text.Trim().Replace("'", "''");
+            view_DEV.RowFilter = string.IsNullOrEmpty(text)
+                ? ""
+                : $"TenantLastName LIKE '%{text}%'";
+        }
+
+        private void BtnResetSearch_DEV_Click(object sender, EventArgs e)
+        {
+            textBoxSearch_DEV.Text = "";
+            view_DEV.RowFilter = "";
+        }
+
+        // Старые методы меню (перенаправляем на кнопки)
+        private void MenuStatistics_DEV_Click(object sender, EventArgs e)
+        {
+            Statistics_DEV_Click(sender, e);
+        }
+
+        private void MenuExport_DEV_Click(object sender, EventArgs e)
+        {
+            Export_DEV_Click(sender, e);
         }
 
         private void MenuFilter_DEV_Click(object sender, EventArgs e)
@@ -421,5 +439,10 @@ $@"СТАТИСТИКА ПО ТЕКУЩЕЙ ТАБЛИЦЕ
         }
 
         private void labelSearch_DEV_Click(object sender, EventArgs e) { }
+
+        private void menuStripMain_DEV_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 }

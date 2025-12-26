@@ -3,9 +3,6 @@
     partial class FormMain_DEV
     {
         private MenuStrip menuStripMain_DEV;
-        private ToolStripMenuItem menuExport_DEV;
-        private ToolStripMenuItem menuStatistics_DEV;
-        private ToolStripMenuItem menuFilter_DEV;
         private DataGridView dataGridViewBase_DEV;
         private Panel panelSearch_DEV;
         private Label labelSearch_DEV;
@@ -15,60 +12,132 @@
 
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             Button Add_DEV;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain_DEV));
             Button Delete_DEV;
             Button Graph_DEV;
             Button About_DEV;
             Button Guide_DEV;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain_DEV));
+            Button Statistics_DEV;
+            Button Export_DEV;
             menuStripMain_DEV = new MenuStrip();
-            menuFilter_DEV = new ToolStripMenuItem();
-            menuExport_DEV = new ToolStripMenuItem();
-            menuStatistics_DEV = new ToolStripMenuItem();
             dataGridViewBase_DEV = new DataGridView();
             panelSearch_DEV = new Panel();
-            Guide_DEV = new Button();
-            About_DEV = new Button();
-            Graph_DEV = new Button();
-            Delete_DEV = new Button();
-            Add_DEV = new Button();
             labelSearch_DEV = new Label();
             textBoxSearch_DEV = new TextBox();
             btnResetSearch_DEV = new Button();
-            menuStripMain_DEV.SuspendLayout();
+            toolTip1 = new ToolTip(components);
+            Add_DEV = new Button();
+            Delete_DEV = new Button();
+            Graph_DEV = new Button();
+            About_DEV = new Button();
+            Guide_DEV = new Button();
+            Statistics_DEV = new Button();
+            Export_DEV = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewBase_DEV).BeginInit();
             panelSearch_DEV.SuspendLayout();
             SuspendLayout();
             // 
+            // Add_DEV
+            // 
+            Add_DEV.BackgroundImage = (Image)resources.GetObject("Add_DEV.BackgroundImage");
+            Add_DEV.BackgroundImageLayout = ImageLayout.Center;
+            Add_DEV.ForeColor = SystemColors.ActiveCaption;
+            Add_DEV.Location = new Point(9, 8);
+            Add_DEV.Name = "Add_DEV";
+            Add_DEV.Size = new Size(60, 60);
+            Add_DEV.TabIndex = 3;
+            toolTip1.SetToolTip(Add_DEV, "Добавить");
+            Add_DEV.UseVisualStyleBackColor = true;
+            Add_DEV.Click += buttonAdd_DEV_Click;
+            // 
+            // Delete_DEV
+            // 
+            Delete_DEV.BackgroundImage = (Image)resources.GetObject("Delete_DEV.BackgroundImage");
+            Delete_DEV.BackgroundImageLayout = ImageLayout.Center;
+            Delete_DEV.ForeColor = SystemColors.ActiveCaption;
+            Delete_DEV.Location = new Point(73, 8);
+            Delete_DEV.Name = "Delete_DEV";
+            Delete_DEV.Size = new Size(60, 60);
+            Delete_DEV.TabIndex = 4;
+            toolTip1.SetToolTip(Delete_DEV, "Удалить");
+            Delete_DEV.UseVisualStyleBackColor = true;
+            Delete_DEV.Click += buttonDelete_DEV_Click;
+            // 
+            // Graph_DEV
+            // 
+            Graph_DEV.BackgroundImage = (Image)resources.GetObject("Graph_DEV.BackgroundImage");
+            Graph_DEV.BackgroundImageLayout = ImageLayout.Center;
+            Graph_DEV.ForeColor = SystemColors.ActiveCaption;
+            Graph_DEV.Location = new Point(139, 8);
+            Graph_DEV.Name = "Graph_DEV";
+            Graph_DEV.Size = new Size(60, 60);
+            Graph_DEV.TabIndex = 5;
+            toolTip1.SetToolTip(Graph_DEV, "Вывести граф");
+            Graph_DEV.UseVisualStyleBackColor = true;
+            Graph_DEV.Click += buttonGraph_DEV_Click;
+            // 
+            // About_DEV
+            // 
+            About_DEV.BackgroundImage = (Image)resources.GetObject("About_DEV.BackgroundImage");
+            About_DEV.BackgroundImageLayout = ImageLayout.Center;
+            About_DEV.ForeColor = SystemColors.ActiveCaption;
+            About_DEV.Location = new Point(205, 8);
+            About_DEV.Name = "About_DEV";
+            About_DEV.Size = new Size(60, 60);
+            About_DEV.TabIndex = 6;
+            toolTip1.SetToolTip(About_DEV, "О программе");
+            About_DEV.UseVisualStyleBackColor = true;
+            About_DEV.Click += buttonAbout_DEV_Click;
+            // 
+            // Guide_DEV
+            // 
+            Guide_DEV.BackgroundImage = (Image)resources.GetObject("Guide_DEV.BackgroundImage");
+            Guide_DEV.BackgroundImageLayout = ImageLayout.Center;
+            Guide_DEV.ForeColor = SystemColors.ActiveCaption;
+            Guide_DEV.Location = new Point(271, 8);
+            Guide_DEV.Name = "Guide_DEV";
+            Guide_DEV.Size = new Size(60, 60);
+            Guide_DEV.TabIndex = 7;
+            toolTip1.SetToolTip(Guide_DEV, "Руководство пользователя");
+            Guide_DEV.UseVisualStyleBackColor = true;
+            Guide_DEV.Click += buttonGuide_DEV_Click;
+            // 
+            // Statistics_DEV
+            // 
+            Statistics_DEV.BackgroundImage = (Image)resources.GetObject("Statistics_DEV.BackgroundImage");
+            Statistics_DEV.BackgroundImageLayout = ImageLayout.Center;
+            Statistics_DEV.ForeColor = SystemColors.ActiveCaption;
+            Statistics_DEV.Location = new Point(337, 8);
+            Statistics_DEV.Name = "Statistics_DEV";
+            Statistics_DEV.Size = new Size(60, 60);
+            Statistics_DEV.TabIndex = 8;
+            toolTip1.SetToolTip(Statistics_DEV, "Статистика");
+            Statistics_DEV.UseVisualStyleBackColor = true;
+            Statistics_DEV.Click += Statistics_DEV_Click;
+            // 
+            // Export_DEV
+            // 
+            Export_DEV.BackgroundImage = (Image)resources.GetObject("Export_DEV.BackgroundImage");
+            Export_DEV.BackgroundImageLayout = ImageLayout.Center;
+            Export_DEV.ForeColor = SystemColors.ActiveCaption;
+            Export_DEV.Location = new Point(403, 8);
+            Export_DEV.Name = "Export_DEV";
+            Export_DEV.Size = new Size(60, 60);
+            Export_DEV.TabIndex = 9;
+            toolTip1.SetToolTip(Export_DEV, "Экспорт");
+            Export_DEV.UseVisualStyleBackColor = true;
+            Export_DEV.Click += Export_DEV_Click;
+            // 
             // menuStripMain_DEV
             // 
             menuStripMain_DEV.ImageScalingSize = new Size(20, 20);
-            menuStripMain_DEV.Items.AddRange(new ToolStripItem[] { menuFilter_DEV, menuExport_DEV, menuStatistics_DEV });
             menuStripMain_DEV.Location = new Point(0, 0);
             menuStripMain_DEV.Name = "menuStripMain_DEV";
             menuStripMain_DEV.Size = new Size(1024, 24);
             menuStripMain_DEV.TabIndex = 2;
-            // 
-            // menuFilter_DEV
-            // 
-            menuFilter_DEV.Name = "menuFilter_DEV";
-            menuFilter_DEV.Size = new Size(60, 20);
-            menuFilter_DEV.Text = "Фильтр";
-            menuFilter_DEV.Click += MenuFilter_DEV_Click;
-            // 
-            // menuExport_DEV
-            // 
-            menuExport_DEV.Name = "menuExport_DEV";
-            menuExport_DEV.Size = new Size(97, 20);
-            menuExport_DEV.Text = "Экспорт в CSV";
-            menuExport_DEV.Click += MenuExport_DEV_Click;
-            // 
-            // menuStatistics_DEV
-            // 
-            menuStatistics_DEV.Name = "menuStatistics_DEV";
-            menuStatistics_DEV.Size = new Size(80, 20);
-            menuStatistics_DEV.Text = "Статистика";
-            menuStatistics_DEV.Click += MenuStatistics_DEV_Click;
+            menuStripMain_DEV.ItemClicked += menuStripMain_DEV_ItemClicked;
             // 
             // dataGridViewBase_DEV
             // 
@@ -86,6 +155,8 @@
             // panelSearch_DEV
             // 
             panelSearch_DEV.BackColor = Color.FromArgb(240, 240, 255);
+            panelSearch_DEV.Controls.Add(Export_DEV);
+            panelSearch_DEV.Controls.Add(Statistics_DEV);
             panelSearch_DEV.Controls.Add(Guide_DEV);
             panelSearch_DEV.Controls.Add(About_DEV);
             panelSearch_DEV.Controls.Add(Graph_DEV);
@@ -101,68 +172,9 @@
             panelSearch_DEV.TabIndex = 1;
             panelSearch_DEV.Paint += panelSearch_DEV_Paint;
             // 
-            // Guide_DEV
-            // 
-            Guide_DEV.BackgroundImage = (System.Drawing.Image)resources.GetObject("Guide_DEV.BackgroundImage"); // ИСПРАВЛЕНО
-            Guide_DEV.BackgroundImageLayout = ImageLayout.Center;
-            Guide_DEV.ForeColor = SystemColors.ActiveCaption;
-            Guide_DEV.Location = new Point(271, 8);
-            Guide_DEV.Name = "Guide_DEV";
-            Guide_DEV.Size = new Size(60, 60);
-            Guide_DEV.TabIndex = 7;
-            Guide_DEV.UseVisualStyleBackColor = true;
-            Guide_DEV.Click += buttonGuide_DEV_Click;
-            // 
-            // About_DEV
-            // 
-            About_DEV.BackgroundImage = (System.Drawing.Image)resources.GetObject("About_DEV.BackgroundImage"); // ИСПРАВЛЕНО
-            About_DEV.BackgroundImageLayout = ImageLayout.Center;
-            About_DEV.ForeColor = SystemColors.ActiveCaption;
-            About_DEV.Location = new Point(205, 8);
-            About_DEV.Name = "About_DEV";
-            About_DEV.Size = new Size(60, 60);
-            About_DEV.TabIndex = 6;
-            About_DEV.UseVisualStyleBackColor = true;
-            About_DEV.Click += buttonAbout_DEV_Click;
-            // 
-            // Graph_DEV
-            // 
-            Graph_DEV.BackgroundImage = (System.Drawing.Image)resources.GetObject("Graph_DEV.BackgroundImage"); // ИСПРАВЛЕНО
-            Graph_DEV.BackgroundImageLayout = ImageLayout.Center;
-            Graph_DEV.ForeColor = SystemColors.ActiveCaption;
-            Graph_DEV.Location = new Point(139, 8);
-            Graph_DEV.Name = "Graph_DEV";
-            Graph_DEV.Size = new Size(60, 60);
-            Graph_DEV.TabIndex = 5;
-            Graph_DEV.UseVisualStyleBackColor = true;
-            Graph_DEV.Click += buttonGraph_DEV_Click;
-            // 
-            // Delete_DEV
-            // 
-            Delete_DEV.BackgroundImage = (System.Drawing.Image)resources.GetObject("Delete_DEV.BackgroundImage"); // ИСПРАВЛЕНО
-            Delete_DEV.BackgroundImageLayout = ImageLayout.Center;
-            Delete_DEV.ForeColor = SystemColors.ActiveCaption;
-            Delete_DEV.Location = new Point(73, 8);
-            Delete_DEV.Name = "Delete_DEV";
-            Delete_DEV.Size = new Size(60, 60);
-            Delete_DEV.TabIndex = 4;
-            Delete_DEV.UseVisualStyleBackColor = true;
-            Delete_DEV.Click += buttonDelete_DEV_Click;
-            // 
-            // Add_DEV
-            // 
-            Add_DEV.BackgroundImage = (System.Drawing.Image)resources.GetObject("Add_DEV.BackgroundImage"); // ИСПРАВЛЕНО
-            Add_DEV.BackgroundImageLayout = ImageLayout.Center;
-            Add_DEV.ForeColor = SystemColors.ActiveCaption;
-            Add_DEV.Location = new Point(9, 8);
-            Add_DEV.Name = "Add_DEV";
-            Add_DEV.Size = new Size(60, 60);
-            Add_DEV.TabIndex = 3;
-            Add_DEV.UseVisualStyleBackColor = true;
-            Add_DEV.Click += buttonAdd_DEV_Click;
-            // 
             // labelSearch_DEV
             // 
+            labelSearch_DEV.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             labelSearch_DEV.AutoSize = true;
             labelSearch_DEV.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             labelSearch_DEV.Location = new Point(567, 34);
@@ -174,6 +186,7 @@
             // 
             // textBoxSearch_DEV
             // 
+            textBoxSearch_DEV.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             textBoxSearch_DEV.Location = new Point(630, 31);
             textBoxSearch_DEV.Name = "textBoxSearch_DEV";
             textBoxSearch_DEV.Size = new Size(300, 23);
@@ -182,6 +195,7 @@
             // 
             // btnResetSearch_DEV
             // 
+            btnResetSearch_DEV.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnResetSearch_DEV.Location = new Point(936, 32);
             btnResetSearch_DEV.Name = "btnResetSearch_DEV";
             btnResetSearch_DEV.Size = new Size(75, 23);
@@ -198,13 +212,13 @@
             Name = "FormMain_DEV";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Домоуправление | Девятов Егор Владимирович | Истнб-25-1";
-            menuStripMain_DEV.ResumeLayout(false);
-            menuStripMain_DEV.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewBase_DEV).EndInit();
             panelSearch_DEV.ResumeLayout(false);
             panelSearch_DEV.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
+        private ToolTip toolTip1;
+        private System.ComponentModel.IContainer components;
     }
 }
