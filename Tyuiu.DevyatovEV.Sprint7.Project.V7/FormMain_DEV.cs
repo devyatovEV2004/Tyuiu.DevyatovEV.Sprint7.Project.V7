@@ -11,8 +11,8 @@ namespace Tyuiu.DevyatovEV.Sprint7.Project.V7
     public partial class FormMain_DEV : Form
     {
         private readonly DataService_DEV dataService_DEV = new DataService_DEV();
-        private DataTable table_DEV;
-        private DataView view_DEV;
+        private DataTable table_DEV = new DataTable();
+        private DataView view_DEV = null!;
 
         private const string CsvPath = @"C:\Users\Egor\source\repos\Tyuiu.DevyatovEV.Sprint7\Data\HousingManagement.csv";
 
@@ -54,21 +54,6 @@ namespace Tyuiu.DevyatovEV.Sprint7.Project.V7
             }
         }
 
-        private void ConfigureDataGridViewForEditing()
-        {
-            dataGridViewBase_DEV.ReadOnly = false;
-            dataGridViewBase_DEV.AllowUserToAddRows = false;
-            dataGridViewBase_DEV.AllowUserToDeleteRows = true;
-            dataGridViewBase_DEV.EditMode = DataGridViewEditMode.EditOnEnter;
-
-            foreach (DataGridViewColumn column in dataGridViewBase_DEV.Columns)
-            {
-                column.ReadOnly = false;
-            }
-
-            dataGridViewBase_DEV.CellEndEdit += DataGridViewBase_DEV_CellEndEdit;
-        }
-
         private void SetColumnHeaders_DEV()
         {
             if (dataGridViewBase_DEV.Columns.Contains("EntranceNumber"))
@@ -95,6 +80,21 @@ namespace Tyuiu.DevyatovEV.Sprint7.Project.V7
                 dataGridViewBase_DEV.Columns["Note"].HeaderText = "Примечание";
         }
 
+        private void ConfigureDataGridViewForEditing()
+        {
+            dataGridViewBase_DEV.ReadOnly = false;
+            dataGridViewBase_DEV.AllowUserToAddRows = false;
+            dataGridViewBase_DEV.AllowUserToDeleteRows = true;
+            dataGridViewBase_DEV.EditMode = DataGridViewEditMode.EditOnEnter;
+
+            foreach (DataGridViewColumn column in dataGridViewBase_DEV.Columns)
+            {
+                column.ReadOnly = false;
+            }
+
+            dataGridViewBase_DEV.CellEndEdit += DataGridViewBase_DEV_CellEndEdit;
+        }
+
         private void DataGridViewBase_DEV_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
@@ -117,6 +117,7 @@ namespace Tyuiu.DevyatovEV.Sprint7.Project.V7
             }
         }
 
+        // ===== ДОБАВЛЕНИЕ СТРОКИ (СТРОКА ВЕРСИЯ) =====
         private void buttonAdd_DEV_Click(object sender, EventArgs e)
         {
             try
@@ -132,7 +133,7 @@ namespace Tyuiu.DevyatovEV.Sprint7.Project.V7
                 newRow["RegistrationDate"] = DateTime.Today.ToString("yyyy-MM-dd");
                 newRow["FamilyMembers"] = 1;
                 newRow["ChildrenCount"] = 0;
-                newRow["HasDebt"] = "нет";
+                newRow["HasDebt"] = "нет"; // СТРОКА "нет"
                 newRow["Note"] = "";
 
                 table_DEV.Rows.Add(newRow);
@@ -189,7 +190,6 @@ namespace Tyuiu.DevyatovEV.Sprint7.Project.V7
             }
         }
 
-        // ===== СТАТИСТИКА (без многодетной семьи) =====
         private void Statistics_DEV_Click(object sender, EventArgs e)
         {
             if (view_DEV.Count == 0)
@@ -347,6 +347,7 @@ namespace Tyuiu.DevyatovEV.Sprint7.Project.V7
             }
         }
 
+        // ===== ФИЛЬТР (СТРОКА ВЕРСИЯ) =====
         private void Filter_DEV_Click(object sender, EventArgs e)
         {
             using (FormFilter_DEV filterForm = new FormFilter_DEV())
@@ -439,17 +440,29 @@ namespace Tyuiu.DevyatovEV.Sprint7.Project.V7
 
         private void buttonGraph_DEV_Click(object sender, EventArgs e)
         {
-            new FormChart_DEV(table_DEV).ShowDialog();
+            if (view_DEV.Count > 0)
+            {
+                MessageBox.Show("Функция построения графика", "График",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Нет данных для построения графика", "Информация",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void buttonGuide_DEV_Click(object sender, EventArgs e)
         {
-            new FormHelp_DEV().ShowDialog();
+            MessageBox.Show("Руководство пользователя", "Справка",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void buttonAbout_DEV_Click(object sender, EventArgs e)
         {
-            new FormAbout_DEV().ShowDialog();
+            MessageBox.Show("О программе: Домоуправление\nРазработчик: Девятов Егор\nГруппа: ИСТНб-25-1",
+                "О программе",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

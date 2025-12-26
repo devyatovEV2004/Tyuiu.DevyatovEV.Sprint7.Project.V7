@@ -28,25 +28,31 @@ namespace Tyuiu.DevyatovEV.Sprint7.Project.V7
             {
                 if (!int.TryParse(textBoxEntrance_DEV.Text, out int entrance))
                 {
-                    MessageBox.Show("Подъезд должен быть числом");
+                    MessageBox.Show("Подъезд должен быть числом", "Ошибка",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
+                if (filter.Length > 0)
+                    filter.Append(" AND ");
                 filter.Append($"EntranceNumber = {entrance}");
             }
 
-            // ===== Долг (bool) =====
+            // ===== Долг (СТРОКА - используем одинарные кавычки) =====
             if (comboBoxDebt_DEV.SelectedIndex > 0)
             {
                 if (filter.Length > 0)
                     filter.Append(" AND ");
 
-                bool hasDebt = comboBoxDebt_DEV.SelectedItem.ToString() == "да";
-                filter.Append($"HasDebt = {hasDebt.ToString().ToLower()}");
+                string debtValue = comboBoxDebt_DEV.SelectedItem.ToString();
+
+                // Для строки ОБЯЗАТЕЛЬНО одинарные кавычки
+                filter.Append($"HasDebt = '{debtValue}'");
             }
 
             ResultFilter = filter.ToString();
             DialogResult = DialogResult.OK;
+            Close();
         }
 
         private void buttonReset_DEV_Click(object sender, EventArgs e)
@@ -59,11 +65,7 @@ namespace Tyuiu.DevyatovEV.Sprint7.Project.V7
         private void buttonCancel_DEV_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
-        }
-
-        private void FormFilter_DEV_Load(object sender, EventArgs e)
-        {
-
+            Close();
         }
     }
 }

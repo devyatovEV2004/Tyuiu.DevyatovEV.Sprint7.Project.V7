@@ -24,7 +24,7 @@ namespace Tyuiu.DevyatovEV.Sprint7.Project.V7.Lib
             table.Columns.Add("RegistrationDate", typeof(string));
             table.Columns.Add("FamilyMembers", typeof(int));
             table.Columns.Add("ChildrenCount", typeof(int));
-            table.Columns.Add("HasDebt", typeof(string));   // СТРОКОВЫЙ тип
+            table.Columns.Add("HasDebt", typeof(string)); // СТРОКА!
             table.Columns.Add("Note", typeof(string));
 
             return table;
@@ -51,6 +51,15 @@ namespace Tyuiu.DevyatovEV.Sprint7.Project.V7.Lib
                 if (parts.Length < ColumnCount)
                     parts = parts.Concat(Enumerable.Repeat("", ColumnCount - parts.Length)).ToArray();
 
+                // Преобразуем в строку "да" или "нет"
+                string debtValue = parts[9].Trim().ToLower();
+                string hasDebtStr = "нет";
+
+                if (debtValue == "да" || debtValue == "true" || debtValue == "1")
+                    hasDebtStr = "да";
+                else if (debtValue == "нет" || debtValue == "false" || debtValue == "0")
+                    hasDebtStr = "нет";
+
                 table.Rows.Add(
                     ToInt(parts[0]),
                     ToInt(parts[1]),
@@ -61,7 +70,7 @@ namespace Tyuiu.DevyatovEV.Sprint7.Project.V7.Lib
                     parts[6],
                     ToInt(parts[7]),
                     ToInt(parts[8]),
-                    parts[9].Trim().ToLower() == "да" ? "да" : "нет",
+                    hasDebtStr, // Сохраняем как строку
                     parts[10]
                 );
             }
@@ -89,7 +98,7 @@ namespace Tyuiu.DevyatovEV.Sprint7.Project.V7.Lib
                     row["RegistrationDate"],
                     row["FamilyMembers"],
                     row["ChildrenCount"],
-                    row["HasDebt"], // Сохраняем как "да"/"нет"
+                    row["HasDebt"], // Уже строка "да"/"нет"
                     Escape(row["Note"])
                 ));
             }
