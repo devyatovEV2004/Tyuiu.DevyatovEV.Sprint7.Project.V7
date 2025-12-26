@@ -15,12 +15,7 @@ namespace Tyuiu.DevyatovEV.Sprint7.Project.V7
             InitializeComponent();
             table_DEV = table;
 
-            Text = "График распределения квартир по количеству комнат";
-            StartPosition = FormStartPosition.CenterScreen;
-            ClientSize = new Size(800, 600);
-            FormBorderStyle = FormBorderStyle.FixedDialog;
-            MaximizeBox = false;
-            MinimizeBox = false;
+            // Настройки, которые не конфликтуют с дизайнером
             DoubleBuffered = true;
             BackColor = Color.FromArgb(250, 250, 255);
         }
@@ -62,10 +57,15 @@ namespace Tyuiu.DevyatovEV.Sprint7.Project.V7
             int marginBottom = 100;
             int marginRight = 40;
 
+            // Используем текущий размер клиентской области
             int chartWidth = ClientSize.Width - marginLeft - marginRight;
             int chartHeight = ClientSize.Height - marginTop - marginBottom;
 
-            int maxCount = groups.Max(gp => gp.Count);
+            // Минимальные размеры для корректного отображения
+            if (chartWidth < 200) chartWidth = 200;
+            if (chartHeight < 200) chartHeight = 200;
+
+            int maxCount = groups.Any() ? groups.Max(gp => gp.Count) : 1;
             if (maxCount == 0) maxCount = 1;
 
             // Заголовок графика
@@ -88,7 +88,7 @@ namespace Tyuiu.DevyatovEV.Sprint7.Project.V7
                 marginTop + chartHeight);
 
             // Шкала значений Y
-            int yStepCount = 10;
+            int yStepCount = Math.Min(10, maxCount);
             for (int i = 0; i <= yStepCount; i++)
             {
                 int y = marginTop + chartHeight - (i * chartHeight / yStepCount);
@@ -100,8 +100,8 @@ namespace Tyuiu.DevyatovEV.Sprint7.Project.V7
                     marginLeft - 40, y - 8);
             }
 
-            int barWidth = Math.Min(60, (chartWidth / groups.Count) - 30);
-            int spacing = 30;
+            int barWidth = Math.Min(60, Math.Max(30, (chartWidth / groups.Count) - 30));
+            int spacing = Math.Max(10, Math.Min(30, (chartWidth - barWidth * groups.Count) / (groups.Count + 1)));
             int x = marginLeft + spacing;
 
             // Цвета для столбцов
@@ -139,10 +139,10 @@ namespace Tyuiu.DevyatovEV.Sprint7.Project.V7
                 SizeF valueTextSize = g.MeasureString(valueText, fontValue);
                 g.DrawString(valueText, fontValue, Brushes.White,
                     x + barWidth / 2 - valueTextSize.Width / 2,
-                    y - 25);
+                    Math.Max(marginTop, y - 25));
 
                 // Маленький индикатор над значением
-                g.FillEllipse(Brushes.White, x + barWidth / 2 - 3, y - 30, 6, 6);
+                g.FillEllipse(Brushes.White, x + barWidth / 2 - 3, Math.Max(marginTop - 5, y - 30), 6, 6);
 
                 x += barWidth + spacing;
                 colorIndex++;
@@ -160,8 +160,11 @@ namespace Tyuiu.DevyatovEV.Sprint7.Project.V7
                     20, marginTop + chartHeight / 2 - 60, sf);
             }
 
-            // Легенда
-            DrawLegend(g, groups, fontAxis, marginLeft + chartWidth + 20, marginTop);
+            // Легенда (рисуем только если есть место)
+            if (chartWidth > 400)
+            {
+                DrawLegend(g, groups, fontAxis, marginLeft + chartWidth + 20, marginTop);
+            }
         }
 
         private void DrawNoData(Graphics g)
@@ -179,6 +182,10 @@ namespace Tyuiu.DevyatovEV.Sprint7.Project.V7
 
         private void DrawLegend(Graphics g, dynamic groups, Font font, int startX, int startY)
         {
+            // Проверяем, есть ли место для легенды
+            if (startX + 200 > ClientSize.Width)
+                return;
+
             using SolidBrush brushText = new SolidBrush(Color.FromArgb(64, 64, 64));
             using Font fontLegend = new Font("Segoe UI", 10, FontStyle.Bold);
 
@@ -217,6 +224,13 @@ namespace Tyuiu.DevyatovEV.Sprint7.Project.V7
         private void FormChart_DEV_Load(object sender, EventArgs e)
         {
 
+        }
+
+        // Добавляем обработчик изменения размера окна
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            Invalidate(); // Перерисовываем график при изменении размера
         }
     }
 }

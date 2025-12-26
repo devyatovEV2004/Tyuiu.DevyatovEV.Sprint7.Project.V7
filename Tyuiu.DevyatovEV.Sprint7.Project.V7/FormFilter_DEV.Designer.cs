@@ -2,261 +2,110 @@
 {
     partial class FormFilter_DEV
     {
-        private NumericUpDown numEntranceFrom_DEV = null!;
-        private NumericUpDown numEntranceTo_DEV = null!;
-        private NumericUpDown numApartmentFrom_DEV = null!;
-        private NumericUpDown numApartmentTo_DEV = null!;
-        private NumericUpDown numTotalFrom_DEV = null!;
-        private NumericUpDown numTotalTo_DEV = null!;
-        private NumericUpDown numLivingFrom_DEV = null!;
-        private NumericUpDown numLivingTo_DEV = null!;
-        private NumericUpDown numRoomsFrom_DEV = null!;
-        private NumericUpDown numRoomsTo_DEV = null!;
-        private NumericUpDown numFamilyFrom_DEV = null!;
-        private NumericUpDown numFamilyTo_DEV = null!;
-        private NumericUpDown numChildrenFrom_DEV = null!;
-        private NumericUpDown numChildrenTo_DEV = null!;
+        private System.ComponentModel.IContainer components = null;
+        private System.Windows.Forms.TextBox textBoxEntrance_DEV;
+        private System.Windows.Forms.ComboBox comboBoxDebt_DEV;
+        private System.Windows.Forms.Button buttonApply_DEV;
+        private System.Windows.Forms.Button buttonReset_DEV;
+        private System.Windows.Forms.Button buttonCancel_DEV;
+        private System.Windows.Forms.Label labelEntrance_DEV;
+        private System.Windows.Forms.Label labelDebt_DEV;
 
-        private TextBox txtLastName_DEV = null!;
-        private TextBox txtNote_DEV = null!;
-        private DateTimePicker dtFrom_DEV = null!;
-        private DateTimePicker dtTo_DEV = null!;
-        private CheckBox chkDate_DEV = null!;
-        private CheckedListBox chkDebt_DEV = null!;
-        private Button btnApply_DEV = null!;
-        private Button btnReset_DEV = null!;
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
         private void InitializeComponent()
         {
-            Text = "Фильтр - Домоуправление";
-            ClientSize = new Size(800, 600);
-            StartPosition = FormStartPosition.CenterParent;
-            Font = new Font("Segoe UI", 10F);
-            BackColor = Color.FromArgb(245, 245, 255);
+            textBoxEntrance_DEV = new System.Windows.Forms.TextBox();
+            comboBoxDebt_DEV = new System.Windows.Forms.ComboBox();
+            buttonApply_DEV = new System.Windows.Forms.Button();
+            buttonReset_DEV = new System.Windows.Forms.Button();
+            buttonCancel_DEV = new System.Windows.Forms.Button();
+            labelEntrance_DEV = new System.Windows.Forms.Label();
+            labelDebt_DEV = new System.Windows.Forms.Label();
 
-            TableLayoutPanel panel = new()
-            {
-                Dock = DockStyle.Fill,
-                ColumnCount = 4,
-                Padding = new Padding(20),
-                BackColor = Color.White
-            };
+            SuspendLayout();
 
-            panel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200));
-            panel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 150));
-            panel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 30));
-            panel.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 150));
+            // labelEntrance_DEV
+            labelEntrance_DEV.AutoSize = true;
+            labelEntrance_DEV.Location = new System.Drawing.Point(20, 20);
+            labelEntrance_DEV.Name = "labelEntrance_DEV";
+            labelEntrance_DEV.Size = new System.Drawing.Size(95, 15);
+            labelEntrance_DEV.TabIndex = 0;
+            labelEntrance_DEV.Text = "Номер подъезда:";
 
-            Controls.Add(panel);
+            // textBoxEntrance_DEV
+            textBoxEntrance_DEV.Location = new System.Drawing.Point(125, 17);
+            textBoxEntrance_DEV.Name = "textBoxEntrance_DEV";
+            textBoxEntrance_DEV.Size = new System.Drawing.Size(150, 23);
+            textBoxEntrance_DEV.TabIndex = 1;
 
-            int r = 0;
+            // labelDebt_DEV
+            labelDebt_DEV.AutoSize = true;
+            labelDebt_DEV.Location = new System.Drawing.Point(20, 60);
+            labelDebt_DEV.Name = "labelDebt_DEV";
+            labelDebt_DEV.Size = new System.Drawing.Size(94, 15);
+            labelDebt_DEV.TabIndex = 2;
+            labelDebt_DEV.Text = "Наличие долга:";
 
-            void AddRange(string text, out NumericUpDown f, out NumericUpDown t)
-            {
-                panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 35));
-                panel.Controls.Add(new Label
-                {
-                    Text = text,
-                    Font = new Font("Segoe UI", 10F, FontStyle.Bold),
-                    ForeColor = Color.FromArgb(64, 64, 64)
-                }, 0, r);
+            // comboBoxDebt_DEV
+            comboBoxDebt_DEV.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBoxDebt_DEV.FormattingEnabled = true;
+            comboBoxDebt_DEV.Location = new System.Drawing.Point(125, 57);
+            comboBoxDebt_DEV.Name = "comboBoxDebt_DEV";
+            comboBoxDebt_DEV.Size = new System.Drawing.Size(150, 23);
+            comboBoxDebt_DEV.TabIndex = 3;
 
-                f = new NumericUpDown
-                {
-                    Maximum = 100000,
-                    Font = new Font("Segoe UI", 10F),
-                    BackColor = Color.White,
-                    BorderStyle = BorderStyle.FixedSingle
-                };
+            // buttonApply_DEV
+            buttonApply_DEV.Location = new System.Drawing.Point(20, 100);
+            buttonApply_DEV.Name = "buttonApply_DEV";
+            buttonApply_DEV.Size = new System.Drawing.Size(80, 35);
+            buttonApply_DEV.TabIndex = 4;
+            buttonApply_DEV.Text = "Применить";
+            buttonApply_DEV.UseVisualStyleBackColor = true;
+            buttonApply_DEV.Click += new System.EventHandler(this.buttonApply_DEV_Click);
 
-                t = new NumericUpDown
-                {
-                    Maximum = 100000,
-                    Font = new Font("Segoe UI", 10F),
-                    BackColor = Color.White,
-                    BorderStyle = BorderStyle.FixedSingle
-                };
+            // buttonReset_DEV
+            buttonReset_DEV.Location = new System.Drawing.Point(110, 100);
+            buttonReset_DEV.Name = "buttonReset_DEV";
+            buttonReset_DEV.Size = new System.Drawing.Size(80, 35);
+            buttonReset_DEV.TabIndex = 5;
+            buttonReset_DEV.Text = "Сбросить";
+            buttonReset_DEV.UseVisualStyleBackColor = true;
+            buttonReset_DEV.Click += new System.EventHandler(this.buttonReset_DEV_Click);
 
-                panel.Controls.Add(f, 1, r);
+            // buttonCancel_DEV
+            buttonCancel_DEV.Location = new System.Drawing.Point(200, 100);
+            buttonCancel_DEV.Name = "buttonCancel_DEV";
+            buttonCancel_DEV.Size = new System.Drawing.Size(80, 35);
+            buttonCancel_DEV.TabIndex = 6;
+            buttonCancel_DEV.Text = "Отмена";
+            buttonCancel_DEV.UseVisualStyleBackColor = true;
+            buttonCancel_DEV.Click += new System.EventHandler(this.buttonCancel_DEV_Click);
 
-                panel.Controls.Add(new Label
-                {
-                    Text = "—",
-                    TextAlign = ContentAlignment.MiddleCenter,
-                    Font = new Font("Segoe UI", 10F, FontStyle.Bold),
-                    ForeColor = Color.FromArgb(128, 128, 128)
-                }, 2, r);
-
-                panel.Controls.Add(t, 3, r);
-                r++;
-            }
-
-            // Заголовок
-            panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 40));
-            var lblTitle = new Label
-            {
-                Text = "Настройка фильтров",
-                Font = new Font("Segoe UI", 14F, FontStyle.Bold),
-                ForeColor = Color.FromArgb(0, 102, 204),
-                TextAlign = ContentAlignment.MiddleCenter,
-                Dock = DockStyle.Fill
-            };
-            panel.Controls.Add(lblTitle, 0, r);
-            panel.SetColumnSpan(lblTitle, 4);
-            r++;
-
-            AddRange("Подъезд", out numEntranceFrom_DEV, out numEntranceTo_DEV);
-            AddRange("Квартира", out numApartmentFrom_DEV, out numApartmentTo_DEV);
-            AddRange("Общая площадь (м²)", out numTotalFrom_DEV, out numTotalTo_DEV);
-            AddRange("Жилая площадь (м²)", out numLivingFrom_DEV, out numLivingTo_DEV);
-            AddRange("Комнаты", out numRoomsFrom_DEV, out numRoomsTo_DEV);
-
-            // Фамилия
-            panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 35));
-            panel.Controls.Add(new Label
-            {
-                Text = "Фамилия",
-                Font = new Font("Segoe UI", 10F, FontStyle.Bold),
-                ForeColor = Color.FromArgb(64, 64, 64)
-            }, 0, r);
-
-            txtLastName_DEV = new TextBox
-            {
-                Font = new Font("Segoe UI", 10F),
-                BackColor = Color.White,
-                BorderStyle = BorderStyle.FixedSingle
-            };
-            panel.Controls.Add(txtLastName_DEV, 1, r);
-            panel.SetColumnSpan(txtLastName_DEV, 3);
-            r++;
-
-            // Дата регистрации
-            panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 35));
-            chkDate_DEV = new CheckBox
-            {
-                Text = "Дата регистрации",
-                Font = new Font("Segoe UI", 10F, FontStyle.Bold),
-                ForeColor = Color.FromArgb(64, 64, 64)
-            };
-            panel.Controls.Add(chkDate_DEV, 0, r);
-
-            dtFrom_DEV = new DateTimePicker
-            {
-                Font = new Font("Segoe UI", 10F),
-                Format = DateTimePickerFormat.Short,
-                BackColor = Color.White
-            };
-
-            dtTo_DEV = new DateTimePicker
-            {
-                Font = new Font("Segoe UI", 10F),
-                Format = DateTimePickerFormat.Short,
-                BackColor = Color.White
-            };
-
-            panel.Controls.Add(dtFrom_DEV, 1, r);
-            panel.Controls.Add(new Label
-            {
-                Text = "—",
-                TextAlign = ContentAlignment.MiddleCenter,
-                Font = new Font("Segoe UI", 10F, FontStyle.Bold),
-                ForeColor = Color.FromArgb(128, 128, 128)
-            }, 2, r);
-            panel.Controls.Add(dtTo_DEV, 3, r);
-            r++;
-
-            AddRange("Семья (чел.)", out numFamilyFrom_DEV, out numFamilyTo_DEV);
-            AddRange("Дети (чел.)", out numChildrenFrom_DEV, out numChildrenTo_DEV);
-
-            // Долг
-            panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 35));
-            panel.Controls.Add(new Label
-            {
-                Text = "Долг",
-                Font = new Font("Segoe UI", 10F, FontStyle.Bold),
-                ForeColor = Color.FromArgb(64, 64, 64)
-            }, 0, r);
-
-            chkDebt_DEV = new CheckedListBox
-            {
-                Height = 50,
-                Font = new Font("Segoe UI", 10F),
-                BackColor = Color.White,
-                BorderStyle = BorderStyle.FixedSingle,
-                CheckOnClick = true
-            };
-            chkDebt_DEV.Items.AddRange(new object[] { "Да", "Нет" });
-            panel.Controls.Add(chkDebt_DEV, 1, r);
-            panel.SetColumnSpan(chkDebt_DEV, 3);
-            r++;
-
-            // Примечание
-            panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 35));
-            panel.Controls.Add(new Label
-            {
-                Text = "Примечание",
-                Font = new Font("Segoe UI", 10F, FontStyle.Bold),
-                ForeColor = Color.FromArgb(64, 64, 64)
-            }, 0, r);
-
-            txtNote_DEV = new TextBox
-            {
-                Font = new Font("Segoe UI", 10F),
-                BackColor = Color.White,
-                BorderStyle = BorderStyle.FixedSingle
-            };
-            panel.Controls.Add(txtNote_DEV, 1, r);
-            panel.SetColumnSpan(txtNote_DEV, 3);
-            r++;
-
-            // Пустая строка для разделения
-            panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20));
-            r++;
-
-            // Кнопки
-            panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 60));
-            FlowLayoutPanel buttons = new()
-            {
-                FlowDirection = FlowDirection.RightToLeft,
-                Dock = DockStyle.Fill,
-                Padding = new Padding(10, 10, 0, 10)
-            };
-
-            btnApply_DEV = new Button
-            {
-                Text = "Применить фильтр",
-                Width = 180,
-                Height = 40,
-                Font = new Font("Segoe UI", 10F, FontStyle.Bold),
-                BackColor = Color.FromArgb(0, 102, 204),
-                ForeColor = Color.White,
-                FlatStyle = FlatStyle.Flat,
-                Cursor = Cursors.Hand
-            };
-            btnApply_DEV.FlatAppearance.BorderSize = 0;
-
-            btnReset_DEV = new Button
-            {
-                Text = "Сбросить фильтры",
-                Width = 180,
-                Height = 40,
-                Font = new Font("Segoe UI", 10F, FontStyle.Bold),
-                BackColor = Color.FromArgb(192, 0, 0),
-                ForeColor = Color.White,
-                FlatStyle = FlatStyle.Flat,
-                Cursor = Cursors.Hand,
-                Margin = new Padding(0, 0, 10, 0)
-            };
-            btnReset_DEV.FlatAppearance.BorderSize = 0;
-
-            btnApply_DEV.Click += BtnApply_DEV_Click;
-            btnReset_DEV.Click += BtnReset_DEV_Click;
-
-            buttons.Controls.Add(btnApply_DEV);
-            buttons.Controls.Add(btnReset_DEV);
-
-            panel.Controls.Add(buttons, 0, r);
-            panel.SetColumnSpan(buttons, 4);
+            // FormFilter_DEV
+            ClientSize = new System.Drawing.Size(300, 150);
+            Controls.Add(buttonCancel_DEV);
+            Controls.Add(buttonReset_DEV);
+            Controls.Add(buttonApply_DEV);
+            Controls.Add(comboBoxDebt_DEV);
+            Controls.Add(labelDebt_DEV);
+            Controls.Add(textBoxEntrance_DEV);
+            Controls.Add(labelEntrance_DEV);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "FormFilter_DEV";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = "Фильтр данных";
+            ResumeLayout(false);
+            PerformLayout();
         }
     }
 }
